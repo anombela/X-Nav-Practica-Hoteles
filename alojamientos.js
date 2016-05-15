@@ -7,7 +7,10 @@ function show_accomodation(){
     var url = accomodation.basicData.web;
     var name = accomodation.basicData.name;
     var desc = accomodation.basicData.body;
-    var img = accomodation.multimedia.media[0].url;
+
+    //var img = accomodation.multimedia.media[0].url;
+    var imgs = accomodation.multimedia.media;
+
     var cat = accomodation.extradata.categorias.categoria.item[1]['#text'];
     var subcat = accomodation.extradata.categorias.categoria
         .subcategorias.subcategoria.item[1]['#text'];
@@ -15,9 +18,26 @@ function show_accomodation(){
 	   .bindPopup('<a href="' + url + '">' + name + '</a><br/>')
 	   .openPopup();
     map.setView([lat, lon], 15);
-    $('#desc').html('<h2>' + name + '</h2>'
+    $('#info').html('<h2>' + name + '</h2>'
         + '<p>Type: ' + cat + ', subtype: ' + subcat + '</p>'
-        + desc + '<img src="' + img + '"">');
+        + desc);
+
+    ///////--CAROUSEL--////////////
+    $("#carousel-indicators").html("");
+    $("#carousel-imgs").html("");
+    var first = ["class='active'"," active"]; // esto se pone en el primero solo
+
+    for (var i = 0; i < imgs.length; i++) {
+        console.log(imgs[i].url);
+        $("#carousel-indicators").append("<li data-target='#carousel' data-slide-to='" + i +"' " + first[0] + "></li>");
+        $("#carousel-imgs").append("<div class='item" + first[1] + "'>" +
+                "<img src='" + imgs[i].url + "' alt='" + i + "'>" +
+                "</div>");
+
+        first = ["",""];
+    };
+    $("#carousel").show();
+
 };
 
 function get_accomodations(){

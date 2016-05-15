@@ -11,18 +11,14 @@
 	margin-top:20px;
 	margin-bottom: 10px;
 	text-align: center;
-	
 	height: 108px;
 
 
 }
 .header h1{
 	
-	margin-top:10px;
 	font: oblique bold 360% cursive; 
 
-	color:red;
-	
 }
 .main{
 	min-height: 700px;
@@ -55,4 +51,11 @@
 	border-style: double;
 	border-radius: 15px;
 	background-color: #FFEFD5;
+}
+
+
+#carousel{
+	width: 79%;
+	margin-left: 11%;
+	margin-bottom: 5px;
 }
