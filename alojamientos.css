@@ -6,7 +6,7 @@
 .header{
 
 	margin-top:20px;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	text-align: center;
 	height: 108px;
 
@@ -16,6 +16,17 @@
 	
 	font: oblique bold 360% cursive; 
 
+}
+#ctabs{
+	border-style: double;
+	border-radius: 15px;
+	margin-bottom: 6px;
+	background-color: white;
+	border-style: none;
+
+}
+#banner{
+	cursor: pointer;
 }
 .main{
 	min-height: 700px;
@@ -43,6 +54,12 @@
 	width: 275px;
 	height: 500px;
 	overflow: scroll;
+}
+
+#list li:hover, #get{
+	cursor: pointer;
+    background-color: yellow;
+
 }
 #get, #list, #map, #desc{
 	border-style: double;

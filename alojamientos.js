@@ -44,7 +44,8 @@ function show_info(no){
 
         first = ["",""];
     };
-    $("#carousel").show();
+    if (imgs.length != 0)
+        $("#carousel").show();
 
 }
 
@@ -96,13 +97,16 @@ function get_accomodations(){
         list = list + '</ul>';
         $('#list').html(list);
 
-        $('li').click(show_accomodation);
+        $('#list li').click(show_accomodation);
         
     });
 };
 
 
 $(document).ready(function() {
+
+      $('#tabs').tab();
+
     map = L.map('map').setView([40.4175, -3.708], 11);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

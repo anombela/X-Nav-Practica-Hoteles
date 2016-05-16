@@ -8,8 +8,8 @@
     <title>Accomodations in Madrid</title>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script> 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
+
+
    
     <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet">
     <link href="alojamientos.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 
     <div class="row">
       <div class="col-md-3">
-      <img src="images/aem.jpg" style="width: 300px;">
+      <a href="javascript:location.reload()"><img  id="banner" src="images/aem.jpg" style="width: 300px;"></a>
       </div>
       <div class="col-md-9" >
         <h1>ALOJAMIENTOS EN MADRID</h1>
@@ -34,8 +34,18 @@
     </div>
   </div>
 
-  <div class="container main">
-    <div class="row">
+  <div id="ctabs" class="container ">
+
+    <ul id="tabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
+        <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+        <li><a href="#colecciones" data-toggle="tab">Colecciones</a></li>
+        <li><a href="#alojados" data-toggle="tab">Alojados</a></li>
+    </ul>
+
+  </div>
+   <div class="container main">
+    <div id="my-tab-content" class="tab-content">
+    <div class="tab-pane active row" id="home">
       <div class="col-md-3">
         <div id="get">Obtener alojamientos</div>
         <div id="list">Vacio</div>
@@ -76,10 +86,17 @@
       </div>
 
     </div>
+    <div class="tab-pane" id="colecciones">
+      <h1>Coleciiones</h1>
+    </div>
+    <div class="tab-pane" id="alojados">
+      <h1>Alojados</h1>
+    </div>
+    </div>
   </div>
-  
 
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
   
 
 </body>
