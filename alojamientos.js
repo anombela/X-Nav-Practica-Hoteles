@@ -1,4 +1,5 @@
-var layers = []
+var layers = [] //array de popups
+var collection = {}
 
 function deletemarker(lat,lon){
 
@@ -92,10 +93,13 @@ function get_accomodations(){
 
         var list = '<ul>'
         for (var i = 0; i < accomodations.length; i++) {
-            list = list + '<li no=' + i + '>' + accomodations[i].basicData.title + '</li>';
+            list = list + '<li  class="ui-widget-content" no=' + i + '>' + accomodations[i].basicData.title + '</li>';
         }
         list = list + '</ul>';
+
         $('.list').html(list);
+
+        $("#list_col_1 li" ).draggable({revert:true,appendTo:"body",helper:"clone"});
 
         $('#list_home li').click(show_accomodation);
 
@@ -105,7 +109,7 @@ function get_accomodations(){
 
 $(document).ready(function() {
 
-      $('#tabs').tab();
+    $('#tabs').tab();
 
     map = L.map('map').setView([40.4175, -3.708], 11);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -121,6 +125,50 @@ $(document).ready(function() {
         show_info($(this._popup._content).attr('no'));
 
     });
+
+    $("#list_col_3").droppable({
+      drop: function( event, ui ) {
+
+        var key = $("#col_title")[0].textContent;
+        if (key == "") return;
+
+        var no = ui.draggable[0].attributes[0].value;
+        var hotel = accomodations[no].basicData.name;
+        collection[key].push(accomodations[no])
+
+        $("#list_col_3 ul").append("<li>" + hotel + "</li>");
+
+;
+      }
+    });
+
+    $( "#form" ).submit(function(event) {
+      event.preventDefault();
+      var new_col = $("#col_name")[0].value;
+      $("#col_name")[0].value = "";
+      if (new_col == "") return;
+      $("#list_col_2 ul").append("<li>" + new_col + "</li>");
+      var c_accomodations = []
+      collection[new_col] = c_accomodations;
+
+      $("#list_col_2 li").click(function(event){
+        var coll = event.target.textContent;
+        console.log("coll",collection)
+        $("#col_title").html(coll)
+
+        $("#list_col_3 ul").html("");
+        var hotel;
+        collection[coll].forEach(function(n){
+
+          hotel = n.basicData.name;
+          $("#list_col_3 ul").append("<li>" + hotel + "</li>")
+
+        });
+      });
+
+    });
+
+
 
 
 

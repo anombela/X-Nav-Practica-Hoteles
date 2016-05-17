@@ -89,28 +89,26 @@
     <div class="tab-pane row" id="colecciones">
       <h1>Gestión de colecciones</h1>
       <div class="col-md-3">
-        Alojamientos disponibles:
+        <h4>Alojamientos:</h4>
         <div id="list_col_1" class="list">Vacio</div>
       </div>
       <div class="col-md-5">
-        Colecciones disponibles:
+        <h4 style="margin-left:16px;">Colecciones disponibles:</h4>
 
-        <form>
+        <form id="form">
           <div id="newcol">
-            <div class="form-group">
-              <label>Nueva colección:</label>
-              <input type="text" class="form-control"  placeholder="Nombre...">
-            </div>
-            <button type="submit" class="btn btn-primary">Crear Colección</button>
+            <label>Nueva colección:</label>
+            <input id="col_name" type="text" class="form-control"  placeholder="Nombre...">
+            <br><input type="submit" class="btn btn-primary" value="Crear Colección">
           </div>
         </form>
 
-        <div id="list_col_2" class="list2">Vacio</div>
+        <div id="list_col_2" class="list2"><ul></ul></div>
 
       </div>
       <div class="col-md-4">
-        Hoteles en la colección:
-        <div id="list_col_3" class="list2">Vacio</div>
+        <h4>Hoteles en: <span id="col_title"></span></h4>
+        <div id="list_col_3" class="list2"><ul></ul></div>
       </div>
     </div>
     <div class="tab-pane" id="alojados">
@@ -121,6 +119,8 @@
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
+  <script src="jquery-ui/jquery-ui.js"></script>
+  <link href="jquery-ui/jquery-ui.css" rel="stylesheet">
 
 
 </body>

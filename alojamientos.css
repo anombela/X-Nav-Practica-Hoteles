@@ -53,12 +53,13 @@
 	margin-top: 5px;
 	width: 275px;
 	height: 500px;
-	overflow: scroll;
+	overflow-y: scroll;
+	overflow-x:
 }
 
 #list_home li:hover, #get{
 	cursor: pointer;
-    background-color: yellow;
+  background-color: yellow;
 
 }
 #get, .list, .list2, #map, #desc, form{
@@ -86,7 +87,7 @@
 
 /*pestaña de coleciones*/
 .list2{
-		overflow: scroll;
+		overflow-y: scroll;
 		margin-top:10px;
 }
 #list_col_2{
