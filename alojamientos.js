@@ -59,10 +59,10 @@ function show_accomodation(){
     var url = accomodation.basicData.web;
     var name = accomodation.basicData.name;
     var markerexists = false;
-    
+
 
     var marker = L.marker([lat, lon]);
-   
+
     for (var i = 0; i < layers.length; i++) {
 
         if (layers[i]._latlng.lat==lat && layers[i]._latlng.lng==lon){
@@ -76,16 +76,16 @@ function show_accomodation(){
         layers.push(marker);
         marker.addTo(map)
             .bindPopup('<a no="'+ no +'" href="' + url + '">' + name + '</a><br/>' + "<a href='#desc'>+ info</a><button id='delete' onclick='deletemarker("+lat+","+lon+")'></button>")
-       
+
     }
     marker.openPopup();
-    map.setView([lat, lon], 15); 
+    map.setView([lat, lon], 15);
 
 };
 
 function get_accomodations(){
 
-    $.getJSON("json/alojamientos.json", function(data) { 
+    $.getJSON("json/alojamientos.json", function(data) {
 
         accomodations = data.serviceList.service;
         $('#get').html('<p>Alojamientos encontrados: ' + accomodations.length + '</p>');
@@ -95,10 +95,10 @@ function get_accomodations(){
             list = list + '<li no=' + i + '>' + accomodations[i].basicData.title + '</li>';
         }
         list = list + '</ul>';
-        $('#list').html(list);
+        $('.list').html(list);
 
-        $('#list li').click(show_accomodation);
-        
+        $('#list_home li').click(show_accomodation);
+
     });
 };
 
@@ -119,9 +119,9 @@ $(document).ready(function() {
 
         //conseguit la posicion de la lista que le pase al popup
         show_info($(this._popup._content).attr('no'));
- 
+
     });
 
-    
+
 
 });

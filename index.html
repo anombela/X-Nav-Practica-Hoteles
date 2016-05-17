@@ -7,16 +7,16 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title>Accomodations in Madrid</title>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script> 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
 
 
-   
+
     <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet">
     <link href="alojamientos.css" rel="stylesheet">
 
-    
+
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-  
+
     <script type="text/javascript" src="alojamientos.js"></script>
    </head>
 <body>
@@ -29,7 +29,7 @@
       </div>
       <div class="col-md-9" >
         <h1>ALOJAMIENTOS EN MADRID</h1>
-    
+
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@
     <div class="tab-pane active row" id="home">
       <div class="col-md-3">
         <div id="get">Obtener alojamientos</div>
-        <div id="list">Vacio</div>
+        <div id="list_home" class="list">Vacio</div>
       </div>
       <div class="col-md-9" >
         <div id="map" ></div>
@@ -86,8 +86,32 @@
       </div>
 
     </div>
-    <div class="tab-pane" id="colecciones">
-      <h1>Coleciiones</h1>
+    <div class="tab-pane row" id="colecciones">
+      <h1>Gestión de colecciones</h1>
+      <div class="col-md-3">
+        Alojamientos disponibles:
+        <div id="list_col_1" class="list">Vacio</div>
+      </div>
+      <div class="col-md-5">
+        Colecciones disponibles:
+
+        <form>
+          <div id="newcol">
+            <div class="form-group">
+              <label>Nueva colección:</label>
+              <input type="text" class="form-control"  placeholder="Nombre...">
+            </div>
+            <button type="submit" class="btn btn-primary">Crear Colección</button>
+          </div>
+        </form>
+
+        <div id="list_col_2" class="list2">Vacio</div>
+
+      </div>
+      <div class="col-md-4">
+        Hoteles en la colección:
+        <div id="list_col_3" class="list2">Vacio</div>
+      </div>
     </div>
     <div class="tab-pane" id="alojados">
       <h1>Alojados</h1>
@@ -97,7 +121,7 @@
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
-  
+
 
 </body>
 </html>

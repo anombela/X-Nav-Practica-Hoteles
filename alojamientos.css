@@ -8,13 +8,13 @@
 	margin-top:20px;
 	margin-bottom: 15px;
 	text-align: center;
-	height: 108px;
+	min-height: 108px;
 
 
 }
 .header h1{
-	
-	font: oblique bold 360% cursive; 
+
+	font: oblique bold 360% cursive;
 
 }
 #ctabs{
@@ -49,19 +49,19 @@
 	margin-top: 5px;
 	text-align: center;
 }
-#list{
+.list{
 	margin-top: 5px;
 	width: 275px;
 	height: 500px;
 	overflow: scroll;
 }
 
-#list li:hover, #get{
+#list_home li:hover, #get{
 	cursor: pointer;
     background-color: yellow;
 
 }
-#get, #list, #map, #desc{
+#get, .list, .list2, #map, #desc, form{
 	border-style: double;
 	border-radius: 15px;
 	background-color: #FFEFD5;
@@ -75,11 +75,36 @@
 }
 
 #delete{
-	background-image: url(images/delete.jpg);  
-	background-repeat:no-repeat; 
-	height:20px; 
-	width:20px; 
-	background-size:19px; 
+	background-image: url(images/delete.jpg);
+	background-repeat:no-repeat;
+	height:20px;
+	width:20px;
+	background-size:19px;
 	background-position:center;
 	float: right;
+}
+
+/*pestaña de coleciones*/
+.list2{
+		overflow: scroll;
+		margin-top:10px;
+}
+#list_col_2{
+	margin-left:15px;
+	height: 371px;
+
+}
+#list_col_3{
+	height: 495px
+
+}
+form{
+	margin-left:15px;
+}
+#newcol{  /*mejorar esto a una linea*/
+	margin-top: 5px;
+	margin-left:10px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+
 }
