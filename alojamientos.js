@@ -129,14 +129,14 @@ $(document).ready(function() {
     $("#list_col_3").droppable({
       drop: function( event, ui ) {
 
-        var key = $("#col_title")[0].textContent;
+        var key = $(".col_title")[0].textContent;
         if (key == "") return;
 
         var no = ui.draggable[0].attributes[0].value;
         var hotel = accomodations[no].basicData.name;
         collection[key].push(accomodations[no])
 
-        $("#list_col_3 ul").append("<li>" + hotel + "</li>");
+        $(".h_coll ul").append("<li>" + hotel + "</li>");
 
 ;
       }
@@ -154,14 +154,14 @@ $(document).ready(function() {
       $("#list_col_2 li").click(function(event){
         var coll = event.target.textContent;
         console.log("coll",collection)
-        $("#col_title").html(coll)
+        $(".col_title").html(coll)
 
-        $("#list_col_3 ul").html("");
+        $(".h_coll ul").html("");
         var hotel;
         collection[coll].forEach(function(n){
 
           hotel = n.basicData.name;
-          $("#list_col_3 ul").append("<li>" + hotel + "</li>")
+          $(".h_coll ul").append("<li>" + hotel + "</li>")
 
         });
       });

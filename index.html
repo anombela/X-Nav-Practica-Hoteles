@@ -7,17 +7,17 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <title>Accomodations in Madrid</title>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-
-
-
     <link href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" rel="stylesheet">
     <link href="alojamientos.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="jquery-ui/jquery-ui.css" rel="stylesheet">
 
-
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"> </script>
+    <script src="jquery-ui/jquery-ui.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-
     <script type="text/javascript" src="alojamientos.js"></script>
+
    </head>
 <body>
 
@@ -47,20 +47,19 @@
     <div id="my-tab-content" class="tab-content">
     <div class="tab-pane active row" id="home">
       <div class="col-md-3">
+
         <div id="get">Obtener alojamientos</div>
         <div id="list_home" class="list">Vacio</div>
+      
+        <h4>Hoteles en: <span class="col_title"></span></h4>
+        <div id="coll_main" class="list2 h_coll"><ul></ul></div>
       </div>
+
       <div class="col-md-9" >
         <div id="map" ></div>
-
-
-
-
         <div id="desc">
 
           <div id="info"></div>
-
-
           <div id="carousel" class="carousel slide" data-ride="carousel" hidden>
             <!-- Indicators -->
             <ol id="carousel-indicators" class="carousel-indicators">
@@ -107,20 +106,18 @@
 
       </div>
       <div class="col-md-4">
-        <h4>Hoteles en: <span id="col_title"></span></h4>
-        <div id="list_col_3" class="list2"><ul></ul></div>
+        <h4>Hoteles en: <span class="col_title"></span></h4>
+        <div id="list_col_3" class="list2 h_coll"><ul></ul></div>
       </div>
     </div>
     <div class="tab-pane" id="alojados">
-      <h1>Alojados</h1>
+      <h1>Gestión de alojados</h1>
     </div>
     </div>
   </div>
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></script>
-  <script src="jquery-ui/jquery-ui.js"></script>
-  <link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+
+
 
 
 </body>

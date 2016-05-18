@@ -40,6 +40,7 @@
 #desc{
 	margin-top:10px;
 	min-height: 400px;
+	margin-bottom: 10px;
 }
 
 
@@ -54,7 +55,6 @@
 	width: 275px;
 	height: 500px;
 	overflow-y: scroll;
-	overflow-x:
 }
 
 #list_home li:hover, #get{
@@ -107,5 +107,12 @@ form{
 	margin-left:10px;
 	margin-right: 10px;
 	margin-bottom: 5px;
+
+}
+
+#coll_main{
+	width: 275px;
+	height: 270px;
+	overflow-y: scroll;
 
 }
