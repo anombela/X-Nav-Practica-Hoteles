@@ -16,6 +16,11 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"> </script>
     <script src="jquery-ui/jquery-ui.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+
+    <script type="text/javascript" src="googleplus-api.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
     <script type="text/javascript" src="alojamientos.js"></script>
 
    </head>
@@ -50,14 +55,14 @@
 
         <div id="get">Obtener alojamientos</div>
         <div id="list_home" class="list">Vacio</div>
-      
+
         <h4>Hoteles en: <span class="col_title"></span></h4>
         <div id="coll_main" class="list2 h_coll"><ul></ul></div>
       </div>
 
       <div class="col-md-9" >
         <div id="map" ></div>
-        <div id="desc">
+        <div id="desc" class="info">
 
           <div id="info"></div>
           <div id="carousel" class="carousel slide" data-ride="carousel" hidden>
@@ -112,6 +117,21 @@
     </div>
     <div class="tab-pane" id="alojados">
       <h1>Gestión de alojados</h1>
+      <div class="row">
+        <div class="col-md-4">
+          <form id="form_plus">
+            <div id="newuserid">
+              <label>Nuevo id de usuario:</label>
+              <input id="id_plus" type="text" class="form-control"  placeholder="ID...">
+              <br><input type="submit" class="btn btn-primary" value="Añadir id">
+            </div>
+          </form>
+
+          <div id="content" class="info"></div>
+        </div>
+        <div class="col-md-8">
+          <div id="desc2" class="info"></div>
+        </div>
     </div>
     </div>
   </div>

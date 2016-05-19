@@ -1,5 +1,7 @@
 var layers = [] //array de popups
 var collection = {}
+var hotel_users = {} //dicionario con clave holet y valor array de usuarios
+var select = ""; //que nombre esta selecionado
 
 function deletemarker(lat,lon){
 
@@ -20,7 +22,9 @@ function show_info(no){
     var lat = accomodation.geoData.latitude;
     var lon = accomodation.geoData.longitude;
     var url = accomodation.basicData.web;
+
     var name = accomodation.basicData.name;
+    select = name; //selecionada esta el hotel con este nombre
     var desc = accomodation.basicData.body;
     var imgs = accomodation.multimedia.media;
     var cat = accomodation.extradata.categorias.categoria.item[1]['#text'];
@@ -47,6 +51,18 @@ function show_info(no){
     };
     if (imgs.length != 0)
         $("#carousel").show();
+
+    $("#desc2").html($('#info').html());
+
+    //pintar usuarios goole plus
+    $("#content").html("");
+    var id;
+    hotel_users[name].forEach(function(id){
+
+      makeApiCall(id,name,"none");
+
+    });
+
 
 }
 
@@ -94,6 +110,8 @@ function get_accomodations(){
         var list = '<ul>'
         for (var i = 0; i < accomodations.length; i++) {
             list = list + '<li  class="ui-widget-content" no=' + i + '>' + accomodations[i].basicData.title + '</li>';
+            var users_plus = []; //array vacio usuarios google plus
+            hotel_users[accomodations[i].basicData.title] =  users_plus;
         }
         list = list + '</ul>';
 
@@ -143,6 +161,7 @@ $(document).ready(function() {
     });
 
     $( "#form" ).submit(function(event) {
+
       event.preventDefault();
       var new_col = $("#col_name")[0].value;
       $("#col_name")[0].value = "";
@@ -165,6 +184,25 @@ $(document).ready(function() {
 
         });
       });
+
+    });
+
+
+    $( "#form_plus" ).submit(function(event) {
+
+      event.preventDefault(); //con esto no se recarga la pagina
+      var new_id = $("#id_plus")[0].value;
+      if (new_id == ""){
+        alert("Debes introducir un id")
+        return;
+      }
+      $("#id_plus")[0].value = "";
+      if (select == ""){
+        alert("Debes tener un alojamiento selecionado para asignarle un nuevo id de usuario google+")
+        return; // si no esta selecionado se acaba
+
+      }
+      makeApiCall(new_id,select,"new");
 
     });
 
