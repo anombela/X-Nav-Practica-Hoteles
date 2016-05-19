@@ -241,11 +241,69 @@ $(document).ready(function() {
             console.log("exito")
         }else{
             console.log("error")
-    }});
+      }});
+    });
+
+    $( "#form_load" ).submit(function(event) {
+
+        event.preventDefault(); //con esto no se recarga la pagina
+        var github;
+        var repo;
+
+        /////cogerToken
+        var token = $("#f-token2")[0].value; //token  del formulario
+        github = new Github({
+          token: token,
+          auth: "oauth"
+        });
+
+        //cogerrepo
+        var username = "anombela";
+        var reponame = $("#f-name-r2")[0].value;
+        repo = github.getRepo(username, reponame);
+        var nombreFichero = $("#f-name-f2")[0].value;
+
+        repo.read('master', nombreFichero , function(err, data) {
+          console.log (err, data);
+          var json = JSON.parse(data);
+
+          collection = json.collection;
+          hotel_users = json.hotel_users;
+
+          $("#list_col_2 ul").html("");
+          Object.keys(collection).forEach(function(i){
+
+            $("#list_col_2 ul").append("<li>" + i + "</li>");
+
+
+          });
+
+          ///esta funvcion esta repetida, mejorarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+          $("#list_col_2 li").click(function(event){
+            var coll = event.target.textContent;
+            console.log("coll",collection)
+            $(".col_title").html(coll)
+
+            $(".h_coll ul").html("");
+            var hotel;
+            collection[coll].forEach(function(n){
+
+              hotel = n.basicData.name;
+              $(".h_coll ul").append("<li>" + hotel + "</li>")
+
+            });
+          });
+
+
+          console.log(json.collection)
+          /**$.getJSON(data, function(err,data2) {
+            console.log(err,data2)
+
+          });*/
+        })
 
 
 
-      console.log("ggggg");
 
     });
 
