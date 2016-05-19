@@ -206,6 +206,48 @@ $(document).ready(function() {
 
     });
 
+///a partir de aqui tiene que ver con guardar y cargar de github un json///
+
+    $( "#form_save" ).submit(function(event) {
+
+      event.preventDefault(); //con esto no se recarga la pagina
+
+      var github;
+      var repo;
+
+      /////cogerToken
+      var token = $("#f-token")[0].value; //token  del formulario
+      github = new Github({
+        token: token,
+        auth: "oauth"
+      });
+
+      //cogerrepo
+      var username = "anombela";
+      var reponame = $("#f-name-r")[0].value;
+      repo = github.getRepo(username, reponame);
+
+
+      //mostarrepo
+
+      //escribirfuchero
+      var dict_global = {collection: collection, hotel_users: hotel_users};
+      var nombreFichero = $("#f-name-f")[0].value;
+      var contenidoFichero = JSON.stringify(dict_global);
+      var mensajeCommit = $("#f-name-c")[0].value;
+
+      repo.write('master', nombreFichero, contenidoFichero, mensajeCommit,function(err) {
+        if(!err){
+            console.log("exito")
+        }else{
+            console.log("error")
+    }});
+
+
+
+      console.log("ggggg");
+
+    });
 
 
 
