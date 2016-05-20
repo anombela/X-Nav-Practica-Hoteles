@@ -5,15 +5,15 @@ var select = ""; //que nombre esta selecionado
 
 function deletemarker(lat,lon){
 
-        for (var i = 0; i < layers.length; i++) {
+    for (var i = 0; i < layers.length; i++) {
 
-            if (layers[i]._latlng.lat==lat && layers[i]._latlng.lng==lon){
+        if (layers[i]._latlng.lat==lat && layers[i]._latlng.lng==lon){
 
-                map.removeLayer(layers[i]);
-                layers.splice(i, 1); //borra el de la posicion i
-                break;
-            }
-        };
+            map.removeLayer(layers[i]);
+            layers.splice(i, 1); //borra el de la posicion i
+            break;
+        }
+    };
 }
 
 function show_info(no){
@@ -59,13 +59,9 @@ function show_info(no){
     var id;
     hotel_users[name].forEach(function(id){
 
-      makeApiCall(id,name,"none");
-
+         makeApiCall(id,name,"none");
     });
-
-
 }
-
 
 function show_accomodation(){
 
@@ -76,8 +72,6 @@ function show_accomodation(){
     var url = accomodation.basicData.web;
     var name = accomodation.basicData.name;
     var markerexists = false;
-
-
     var marker = L.marker([lat, lon]);
 
     for (var i = 0; i < layers.length; i++) {
@@ -140,14 +134,11 @@ function save_load(mode){
                     msg = "Ha ocurrido un error: error " + err.error;
                 }
                 $("#msg").html(msg);
-                
-
             });
 
         } else if (mode == "load"){
 
             repo.read('master', nombreFichero , function(err, data) {
-
                 $("#f_save_load").hide();
                 var msg = ""
                 if(!err){
@@ -204,25 +195,19 @@ function get_accomodations(){
     });
 };
 
-    function show_hotels(coll){
+function show_hotels(coll){
 
-        
-        $(".col_title").html(coll)
+    $(".col_title").html(coll)
 
-        $(".h_coll ul").html("");
-        var hotel;
-        collection[coll].forEach(function(n){
+    $(".h_coll ul").html("");
+    var hotel;
+    collection[coll].forEach(function(n){
 
-          hotel = n.basicData.name;
-          $(".h_coll ul").append("<li>" + hotel + "</li>")
+        hotel = n.basicData.name;
+        $(".h_coll ul").append("<li>" + hotel + "</li>")
 
-        });
-
-
-
-    }
-
-
+    });
+};
 
 $(document).ready(function() {
 
@@ -244,58 +229,51 @@ $(document).ready(function() {
     });
 
     $("#list_col_3").droppable({
-      drop: function( event, ui ) {
+        drop: function( event, ui ) {
 
-        var key = $(".col_title")[0].textContent;
-        if (key == "") return;
+            var key = $(".col_title")[0].textContent;
+            if (key == "") return;
 
-        var no = ui.draggable[0].attributes[0].value;
-        var hotel = accomodations[no].basicData.name;
-        collection[key].push(accomodations[no])
+            var no = ui.draggable[0].attributes[0].value;
+            var hotel = accomodations[no].basicData.name;
+            collection[key].push(accomodations[no])
 
-        $(".h_coll ul").append("<li>" + hotel + "</li>");
-
-;
-      }
+            $(".h_coll ul").append("<li>" + hotel + "</li>");
+        }
     });
 
     $( "#form" ).submit(function(event) {
 
-      event.preventDefault();
-      var new_col = $("#col_name")[0].value;
-      $("#col_name")[0].value = "";
-      if (new_col == "") return;
-      $("#list_col_2 ul").append("<li>" + new_col + "</li>");
-      var c_accomodations = []
-      collection[new_col] = c_accomodations;
+        event.preventDefault();
+        var new_col = $("#col_name")[0].value;
+        $("#col_name")[0].value = "";
+        if (new_col == "") return;
+        $("#list_col_2 ul").append("<li>" + new_col + "</li>");
+        var c_accomodations = []
+        collection[new_col] = c_accomodations;
 
         $("#list_col_2 li").click(function(event){
 
             var coll = event.target.textContent;
             show_hotels(coll);
         });
-
-
-
     });
 
 
     $( "#form_plus" ).submit(function(event) {
 
-      event.preventDefault(); //con esto no se recarga la pagina
-      var new_id = $("#id_plus")[0].value;
-      if (new_id == ""){
-        alert("Debes introducir un id")
-        return;
-      }
-      $("#id_plus")[0].value = "";
-      if (select == ""){
-        alert("Debes tener un alojamiento selecionado para asignarle un nuevo id de usuario google+")
-        return; // si no esta selecionado se acaba
-
-      }
-      makeApiCall(new_id,select,"new");
-
+        event.preventDefault(); //con esto no se recarga la pagina
+        var new_id = $("#id_plus")[0].value;
+        if (new_id == ""){
+            alert("Debes introducir un id")
+            return;
+        }
+        $("#id_plus")[0].value = "";
+        if (select == ""){
+            alert("Debes tener un alojamiento selecionado para asignarle un nuevo id de usuario google+")
+            return; // si no esta selecionado se acaba
+        }
+        makeApiCall(new_id,select,"new");
     });
   
 
