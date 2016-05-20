@@ -62,7 +62,7 @@
   background-color: yellow;
 
 }
-#get, .list, .list2, #map, .info, form{
+#get, .list, .list2, #map, .info, .form{
 	border-style: double;
 	border-radius: 15px;
 	background-color: #FFEFD5;
@@ -120,4 +120,14 @@
 	height: 500px;
 	overflow-y: scroll;
 	margin-top: 10px;
+}
+
+
+
+
+
+
+
+.ui-dialog-content{
+	background-color:green;
 }

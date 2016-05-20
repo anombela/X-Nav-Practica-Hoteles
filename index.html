@@ -43,13 +43,21 @@
 
   <div id="ctabs" class="container ">
 
-    <ul id="tabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
-        <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-        <li><a href="#colecciones" data-toggle="tab">Colecciones</a></li>
-        <li><a href="#alojados" data-toggle="tab">Alojados</a></li>
-    </ul>
-
+    <div class="row">
+      <div class="col-md-10">
+        <ul id="tabs" class="nav nav-tabs nav-justified" data-tabs="tabs">
+          <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+          <li><a href="#colecciones" data-toggle="tab">Colecciones</a></li>
+          <li><a href="#alojados" data-toggle="tab">Alojados</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <input id="save" type="submit" class="btn btn-primary" value="Guardar">
+        <input id="load" type="submit" class="btn btn-primary" value="Cargar">
+      </div>
+    </div>
   </div>
+
    <div class="container main">
     <div id="my-tab-content" class="tab-content">
     <div class="tab-pane active row" id="home">
@@ -101,7 +109,7 @@
       <div class="col-md-5">
         <h4 style="margin-left:16px;">Colecciones disponibles:</h4>
 
-        <form id="form">
+        <form id="form" class="form">
           <div id="newcol">
             <label>Nueva colección:</label>
             <input id="col_name" type="text" class="form-control"  placeholder="Nombre...">
@@ -121,7 +129,7 @@
       <h1>Gestión de alojados</h1>
       <div class="row">
         <div class="col-md-4">
-          <form id="form_plus">
+          <form id="form_plus" class="form">
             <div id="newuserid">
               <label>Nuevo id de usuario:</label>
               <input id="id_plus" type="text" class="form-control"  placeholder="ID...">
@@ -139,33 +147,20 @@
   </div>
 </div>
 
-<input id="save" type="submit" class="btn btn-primary" value="Guardar">
-<input id="load" type="submit" class="btn btn-primary" value="Cargar">
 
-<form id="form_save">
-
+<!-- ui-dialog -->
+<div id="dialog" title="aaaaaaa">
+  <form id="f_save_load">
     <label>Token:</label>
     <input id="f-token" type="text" class="form-control"  placeholder="Token...">
     <label>Nombre repositorio:</label>
     <input id="f-name-r" type="text" class="form-control"  placeholder="Nombre...">
     <label>Nombre fichero:</label>
     <input id="f-name-f" type="text" class="form-control"  placeholder="Nombre...">
-    <label>Asunto commit:</label>
-    <input id="f-name-c" type="text" class="form-control"  placeholder="Nombre...">
-    <input type="submit" class="btn btn-primary" value="Enviar">
-
-</form>
-
-<form id="form_load">
-
-    <label>Token:</label>
-    <input id="f-token2" type="text" class="form-control"  placeholder="Token...">
-    <label>Nombre repositorio:</label>
-    <input id="f-name-r2" type="text" class="form-control"  placeholder="Nombre...">
-    <label>Nombre fichero:</label>
-    <input id="f-name-f2" type="text" class="form-control"  placeholder="Nombre...">
-    <input type="submit" class="btn btn-primary" value="Enviar">
-</form>
+    <br><input type="submit" class="btn btn-primary" value="Enviar">
+  </form>
+  <div id="msg"></div>
+</div>
 
 
 

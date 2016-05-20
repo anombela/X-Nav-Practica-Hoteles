@@ -100,6 +100,79 @@ function show_accomodation(){
 
 };
 
+function save_load(mode){
+
+    $( "#f_save_load" ).submit(function(event){
+
+        event.preventDefault(); //con esto no se recarga la pagina
+        var github;
+        var repo;
+
+        /////cogerToken
+        var token = $("#f-token")[0].value; //token  del formulario
+        github = new Github({
+            token: token,
+            auth: "oauth"
+        });
+
+        //cogerrepo
+        var username = "anombela";
+        var reponame = $("#f-name-r")[0].value;
+        repo = github.getRepo(username, reponame);
+
+        var nombreFichero = $("#f-name-f")[0].value;
+
+        if (mode == "save"){
+
+            //escribirfuchero
+            var dict_global = {collection: collection, hotel_users: hotel_users};
+        
+            var contenidoFichero = JSON.stringify(dict_global);
+            var mensajeCommit = "Guardado json";
+
+            repo.write('master', nombreFichero, contenidoFichero, mensajeCommit,function(err) {
+
+                $("#f_save_load").hide();
+                var msg = ""
+                if(!err){
+                    msg = "El json se ha creado y enviado con exito.";
+                }else{
+                    msg = "Ha ocurrido un error: error " + err.error;
+                }
+                $("#msg").html(msg);
+
+            });
+
+        } else if (mode == "load"){
+
+            repo.read('master', nombreFichero , function(err, data) {
+
+                $("#f_save_load").hide();
+                var msg = ""
+                if(!err){
+
+                    var json = JSON.parse(data);
+
+                    collection = json.collection;
+                    hotel_users = json.hotel_users;
+
+                    $("#list_col_2 ul").html("");
+                    Object.keys(collection).forEach(function(i){
+                    
+                        $("#list_col_2 ul").append("<li>" + i + "</li>");
+                    });
+                    msg = "Descargado json con exito.";
+
+                }else{
+                    msg = "Ha ocurrido un error: file " + err;
+                }
+                $("#msg").html(msg);
+
+            });
+        }
+    });
+}
+
 function get_accomodations(){
 
     $.getJSON("json/alojamientos.json", function(data) {
@@ -205,109 +278,51 @@ $(document).ready(function() {
       makeApiCall(new_id,select,"new");
 
     });
+  
 
-///a partir de aqui tiene que ver con guardar y cargar de github un json///
-
-    $( "#form_save" ).submit(function(event) {
-
-      event.preventDefault(); //con esto no se recarga la pagina
-
-      var github;
-      var repo;
-
-      /////cogerToken
-      var token = $("#f-token")[0].value; //token  del formulario
-      github = new Github({
-        token: token,
-        auth: "oauth"
-      });
-
-      //cogerrepo
-      var username = "anombela";
-      var reponame = $("#f-name-r")[0].value;
-      repo = github.getRepo(username, reponame);
-
-
-      //mostarrepo
-
-      //escribirfuchero
-      var dict_global = {collection: collection, hotel_users: hotel_users};
-      var nombreFichero = $("#f-name-f")[0].value;
-      var contenidoFichero = JSON.stringify(dict_global);
-      var mensajeCommit = $("#f-name-c")[0].value;
-
-      repo.write('master', nombreFichero, contenidoFichero, mensajeCommit,function(err) {
-        if(!err){
-            console.log("exito")
-        }else{
-            console.log("error")
-      }});
+    $( "#dialog" ).dialog({
+        autoOpen: false,
+        width: 300,
+        buttons: [
+            {
+                text: "Close",
+                click: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        ],
+        modal: true,
+        overlay: {
+            opacity: 0.5,
+            background: "black"
+        }
     });
 
-    $( "#form_load" ).submit(function(event) {
+    // Link to open the dialog
+    $( "#save, #load" ).click(function( event ) {
 
-        event.preventDefault(); //con esto no se recarga la pagina
-        var github;
-        var repo;
+        event.preventDefault();
+        var id_press = event.currentTarget.id;
+        var title = ""
 
-        /////cogerToken
-        var token = $("#f-token2")[0].value; //token  del formulario
-        github = new Github({
-          token: token,
-          auth: "oauth"
-        });
+        if (id_press == "save"){
 
-        //cogerrepo
-        var username = "anombela";
-        var reponame = $("#f-name-r2")[0].value;
-        repo = github.getRepo(username, reponame);
-        var nombreFichero = $("#f-name-f2")[0].value;
+            title = "GUARDAR contenido en github."
 
-        repo.read('master', nombreFichero , function(err, data) {
-          console.log (err, data);
-          var json = JSON.parse(data);
+        }else if (id_press == "load"){
 
-          collection = json.collection;
-          hotel_users = json.hotel_users;
+            title = "CARGAR contenido desde el github"
+        }
+        //reinicia las cosas 
+        $("#f_save_load").show();
+        $("#msg").html("");
 
-          $("#list_col_2 ul").html("");
-          Object.keys(collection).forEach(function(i){
+        $( "#dialog" ).dialog( "option" ,"title",title); //cambia el titulo
 
-            $("#list_col_2 ul").append("<li>" + i + "</li>");
-
-
-          });
-
-          ///esta funvcion esta repetida, mejorarrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
-          $("#list_col_2 li").click(function(event){
-            var coll = event.target.textContent;
-            console.log("coll",collection)
-            $(".col_title").html(coll)
-
-            $(".h_coll ul").html("");
-            var hotel;
-            collection[coll].forEach(function(n){
-
-              hotel = n.basicData.name;
-              $(".h_coll ul").append("<li>" + hotel + "</li>")
-
-            });
-          });
-
-
-          console.log(json.collection)
-          /**$.getJSON(data, function(err,data2) {
-            console.log(err,data2)
-
-          });*/
-        })
-
-
-
-
+         save_load(id_press);//llama a la funcion y guardara o cargara dependiendo del id
+        
+        //paso el this para luego coger el id en la fucnion de dialog
+        $( "#dialog" ).data("link", this).dialog( "open" );
+         
     });
-
-
-
-
 });
