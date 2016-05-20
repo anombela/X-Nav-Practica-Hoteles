@@ -11,6 +11,7 @@
     <link href="alojamientos.css" rel="stylesheet">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+    <link href="alojamientos.css" rel="stylesheet">
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"> </script>
@@ -61,12 +62,13 @@
    <div class="container main">
     <div id="my-tab-content" class="tab-content">
     <div class="tab-pane active row" id="home">
+      <h2>Página Principal</h2>
       <div class="col-md-3">
 
         <div id="get">Obtener alojamientos</div>
         <div id="list_home" class="list">Vacio</div>
 
-        <h4>Hoteles en: <span class="col_title"></span></h4>
+        <h4 class="title">Hoteles en: <span class="col_title"></span></h4>
         <div id="coll_main" class="list2 h_coll"><ul></ul></div>
       </div>
 
@@ -101,13 +103,13 @@
 
     </div>
     <div class="tab-pane row" id="colecciones">
-      <h1>Gestión de colecciones</h1>
+      <h2>Gestión de colecciones</h2>
       <div class="col-md-3">
-        <h4>Alojamientos:</h4>
+        <h4 class="title">Alojamientos</h4>
         <div id="list_col_1" class="list">Vacio</div>
       </div>
       <div class="col-md-5">
-        <h4 style="margin-left:16px;">Colecciones disponibles:</h4>
+        <h4 class="title" style="margin-left:16px;">Colecciones disponibles</h4>
 
         <form id="form" class="form">
           <div id="newcol">
@@ -121,14 +123,15 @@
 
       </div>
       <div class="col-md-4">
-        <h4>Hoteles en: <span class="col_title"></span></h4>
+        <h4 class="title">Hoteles en: <span class="col_title"></span></h4>
         <div id="list_col_3" class="list2 h_coll"><ul></ul></div>
       </div>
     </div>
     <div class="tab-pane" id="alojados">
-      <h1>Gestión de alojados</h1>
+      <h2>Gestión de alojados</h2>
       <div class="row">
         <div class="col-md-4">
+          <h4 class="title">Usuarios de Google+</h4>
           <form id="form_plus" class="form">
             <div id="newuserid">
               <label>Nuevo id de usuario:</label>
@@ -136,11 +139,15 @@
               <br><input type="submit" class="btn btn-primary" value="Añadir id">
             </div>
           </form>
-
-          <div id="content" class="info"></div>
+          <div class="info">
+            <div id="content"></div>
+          </div>
         </div>
         <div class="col-md-8">
-          <div id="desc2" class="info"></div>
+
+          <div class="info">
+            <div id="desc2"></div>
+          </div>
         </div>
     </div>
     </div>
@@ -152,22 +159,15 @@
 <div id="dialog" title="aaaaaaa">
   <form id="f_save_load">
     <label>Token:</label>
-    <input id="f-token" type="text" class="form-control"  placeholder="Token...">
+    <input id="f-token" type="password" class="form-control"  placeholder="Token...">
     <label>Nombre repositorio:</label>
     <input id="f-name-r" type="text" class="form-control"  placeholder="Nombre...">
     <label>Nombre fichero:</label>
     <input id="f-name-f" type="text" class="form-control"  placeholder="Nombre...">
-    <br><input type="submit" class="btn btn-primary" value="Enviar">
+    <br><input type="submit" class="btn btn-primary" value="Aceptar">
   </form>
   <div id="msg"></div>
 </div>
-
-
-
-
-
-
-
 
 
 </body>

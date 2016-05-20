@@ -140,6 +140,7 @@ function save_load(mode){
                     msg = "Ha ocurrido un error: error " + err.error;
                 }
                 $("#msg").html(msg);
+                
 
             });
 
@@ -160,6 +161,12 @@ function save_load(mode){
                     Object.keys(collection).forEach(function(i){
                     
                         $("#list_col_2 ul").append("<li>" + i + "</li>");
+                    });
+
+                    $("#list_col_2 li").click(function(event){
+
+                        var coll = event.target.textContent;
+                        show_hotels(coll);
                     });
                     msg = "Descargado json con exito.";
 
@@ -196,6 +203,25 @@ function get_accomodations(){
 
     });
 };
+
+    function show_hotels(coll){
+
+        
+        $(".col_title").html(coll)
+
+        $(".h_coll ul").html("");
+        var hotel;
+        collection[coll].forEach(function(n){
+
+          hotel = n.basicData.name;
+          $(".h_coll ul").append("<li>" + hotel + "</li>")
+
+        });
+
+
+
+    }
+
 
 
 $(document).ready(function() {
@@ -243,20 +269,13 @@ $(document).ready(function() {
       var c_accomodations = []
       collection[new_col] = c_accomodations;
 
-      $("#list_col_2 li").click(function(event){
-        var coll = event.target.textContent;
-        console.log("coll",collection)
-        $(".col_title").html(coll)
+        $("#list_col_2 li").click(function(event){
 
-        $(".h_coll ul").html("");
-        var hotel;
-        collection[coll].forEach(function(n){
-
-          hotel = n.basicData.name;
-          $(".h_coll ul").append("<li>" + hotel + "</li>")
-
+            var coll = event.target.textContent;
+            show_hotels(coll);
         });
-      });
+
+
 
     });
 
@@ -282,7 +301,7 @@ $(document).ready(function() {
 
     $( "#dialog" ).dialog({
         autoOpen: false,
-        width: 300,
+        width: 330,
         buttons: [
             {
                 text: "Close",

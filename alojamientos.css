@@ -1,3 +1,7 @@
+body{
+	size:30%;
+}
+
 .container{
 	border-style: double;
 	border-radius: 15px;
@@ -12,7 +16,7 @@
 
 
 }
-.header h1{
+h1{
 
 	font: oblique bold 360% cursive;
 
@@ -33,7 +37,7 @@
 }
 
 #map{
-	margin-top:40px;
+
 	height: 400px;
 }
 
@@ -41,6 +45,10 @@
 	margin-top:10px;
 	min-height: 400px;
 	margin-bottom: 10px;
+}
+#info, #desc2, #content{
+	margin-left: 30px;
+	margin-right: 30px;
 }
 
 
@@ -53,16 +61,16 @@
 .list{
 	margin-top: 5px;
 	width: 275px;
-	height: 500px;
+	height: 460px;
 	overflow-y: scroll;
 }
 
-#list_home li:hover, #get{
+#list_home li:hover,#list_col_2 li:hover, #get{
 	cursor: pointer;
   background-color: yellow;
 
 }
-#get, .list, .list2, #map, .info, .form{
+#get, .list, .list2, #map, .info, .form, .title{
 	border-style: double;
 	border-radius: 15px;
 	background-color: #FFEFD5;
@@ -92,17 +100,17 @@
 }
 #list_col_2{
 	margin-left:15px;
-	height: 371px;
+	height: 320px;
 
 }
 #list_col_3{
-	height: 495px
+	height: 455px
 
 }
 #form{
 	margin-left:15px;
 }
-#newcol{  /*mejorar esto a una linea*/
+#newcol, #newuserid{  /*mejorar esto a una linea*/
 	margin-top: 5px;
 	margin-left:10px;
 	margin-right: 10px;
@@ -112,7 +120,7 @@
 
 #coll_main{
 	width: 275px;
-	height: 270px;
+	height: 263px;
 	overflow-y: scroll;
 
 }
@@ -121,13 +129,18 @@
 	overflow-y: scroll;
 	margin-top: 10px;
 }
+#content{
+	height: 336px;
 
-
-
-
-
-
-
-.ui-dialog-content{
-	background-color:green;
 }
+
+.title, h2{
+	text-align: center;
+	text-decoration: underline;
+}
+
+h2{
+	font: oblique bold 250% cursive;
+}
+
+
